@@ -2,13 +2,16 @@ import os
 import pandas as pd
 from time import sleep
 
+# Comentário: path dos arquivos / banco de dados
 ARQUIVO_PACIENTES = "dados/pacientes.csv"
 ARQUIVO_MEDICOS = "dados/medicos.csv"
 ARQUIVO_AGENDAMENTOS = "dados/agendamentos.csv"
 
+# Comentário: função para limpar o terminal do usuário
 def limpar_tela():
     os.system("cls || clear")
 
+# Comentário: função para formatar o CPF do usuário, evitando que dê erros devido à pontuação
 def formatar_cpf(cpf):
     cpf = str(cpf)
     
@@ -18,6 +21,7 @@ def formatar_cpf(cpf):
     
     return cpf
 
+# Comentário: função que gera o menu inicial do sistema
 def boas_vindas():
     limpar_tela()
 
@@ -400,3 +404,37 @@ def menu_paciente(nome_paciente):
         else:
             print("\n❌ Opção inválida.")
             sleep(1)
+
+
+
+
+
+
+
+
+
+
+
+
+         
+"""
+Menu do Administrador
+1) Cadastrar Paciente
+2) Cadastrar Médico
+3) Histórico de Agendamentos
+4) Deletar Paciente
+5) Deletar Médico
+6) Cancelar Agendamento
+
+Ajuste 1: No arquivo de médicos, colocar datas e não nomes dos dias
+
+Ajuste 2: No login, quando falhar, não voltar pro menu inicial, mas voltar pro login novamente
+
+Ajuste 3: Ao invés de ter idade, calcular a idade pela data de nascimento
+
+Ajuste 4: Adicionar campo de sexo na tabela de pacientes
+
+Ajuste 5: Filtrar especialidades por idade (a partir do ajuste 3)
+"""
+
+

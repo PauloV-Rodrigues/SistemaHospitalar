@@ -1,6 +1,5 @@
 from funcoes import *
 
-
 while True:
     usuario = boas_vindas()
 
