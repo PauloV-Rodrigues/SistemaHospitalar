@@ -1,6 +1,7 @@
 from time import sleep
 from modulos.utilitarios import limpar_tela
 
+#Comentário: Função de boas-vindas
 def boas_vindas():
     limpar_tela()
 

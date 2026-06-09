@@ -4,6 +4,7 @@ from getpass import getpass
 from modulos.configuracoes import ARQUIVO_PACIENTES, ARQUIVO_ADMINS
 from modulos.utilitarios import limpar_tela, formatar_cpf
 
+#Comentário: Login do Paciente
 def login_paciente():
     while True:
         limpar_tela()
@@ -26,26 +27,16 @@ def login_paciente():
 
         try:
             pacientes = pd.read_csv(ARQUIVO_PACIENTES,dtype=str)
-
             pacientes.columns = pacientes.columns.str.strip()
-
             pacientes["CPF"] = pacientes["CPF"].apply(formatar_cpf)
-
             pacientes["SENHA"] = (pacientes["SENHA"].astype(str).str.strip())
-
-            usuario = pacientes[
-                (pacientes["CPF"] == cpf_digitado) &
-                (pacientes["SENHA"] == senha_digitada)
-            ]
+            usuario = pacientes[(pacientes["CPF"] == cpf_digitado) & (pacientes["SENHA"] == senha_digitada)]
 
             if not usuario.empty:
                 nome = usuario.iloc[0]["NOME"]
-
                 print("\nLogin realizado com sucesso!")
                 print(f"Bem-vindo(a), {nome}.")
-
                 sleep(2)
-
                 return nome
 
             else:
@@ -59,7 +50,8 @@ def login_paciente():
         except Exception as erro:
             print(f"\nErro ao realizar login: {erro}")
             input("\nPressione ENTER para continuar...")
-            
+
+#Comentário: Login do Administrador            
 def login_admin():
     while True:
         limpar_tela()
@@ -78,38 +70,17 @@ def login_admin():
         senha_digitada = getpass("Senha: ").strip()
 
         try:
-            admins = pd.read_csv(
-                ARQUIVO_ADMINS,
-                dtype=str
-            )
-
+            admins = pd.read_csv(ARQUIVO_ADMINS,dtype=str)
             admins.columns = admins.columns.str.strip()
-
-            admins["MATRICULA"] = (
-                admins["MATRICULA"]
-                .astype(str)
-                .str.strip()
-            )
-
-            admins["SENHA"] = (
-                admins["SENHA"]
-                .astype(str)
-                .str.strip()
-            )
-
-            usuario = admins[
-                (admins["MATRICULA"] == matricula_digitada) &
-                (admins["SENHA"] == senha_digitada)
-            ]
+            admins["MATRICULA"] = (admins["MATRICULA"].astype(str).str.strip())
+            admins["SENHA"] = (admins["SENHA"].astype(str).str.strip())
+            usuario = admins[(admins["MATRICULA"] == matricula_digitada) & (admins["SENHA"] == senha_digitada)]
 
             if not usuario.empty:
                 nome = usuario.iloc[0]["NOME"]
-
                 print("\nLogin realizado com sucesso!")
                 print(f"Bem-vindo(a), {nome}.")
-
                 sleep(2)
-
                 return nome
 
             else:

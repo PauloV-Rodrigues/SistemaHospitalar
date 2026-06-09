@@ -13,7 +13,6 @@ while True:
             menu_admin(admin_logado)
 
     elif usuario == "paciente":
-
         paciente_logado = login_paciente()
 
         if paciente_logado:
